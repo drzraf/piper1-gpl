@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add `piper.chunking`: configurable text chunking on word/punctuation/sentence boundaries
+
 ## 1.8.0
 
 - Add Thai phonemizer using TLTK in the new `th` extra
@@ -24,7 +28,6 @@
     - `g2pw.api` imports torch only to build padded tensors and iterate batches; the model itself already ran under onnxruntime
     - Also 1.5-2x faster, since it no longer forks DataLoader worker processes on every call
     - `g2pW` is still required, for its pinyin/bopomofo lookup tables
-
 ## 1.6.0
 
 - Add Hebrew phonemizer using Nakdimon
