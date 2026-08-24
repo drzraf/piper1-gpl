@@ -6,6 +6,7 @@
 - HTTP server: add `/stop` plus channel/group preemption and client-disconnect detection so speech can be interrupted immediately
 - HTTP server: split text into small chunks before synthesis (`--chunk-*`) and warm the model up at startup
 - Add `piper.chunking`: configurable text chunking on word/punctuation/sentence boundaries
+- Add `piper.client` and the `piper-client` command: streaming HTTP client with chunking, prefetching, instant interruption and audio playback
 
 ## 1.8.0
 
