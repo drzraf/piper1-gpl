@@ -27,7 +27,7 @@ slower than the others.
 
 Audio is **streamed while it is being synthesized**, and requests can be
 **interrupted**, which is what makes the server usable as a screen reader
-backend.
+backend — see [Speech Dispatcher](SPEECHD.md).
 
 ## Web Interface
 
@@ -157,7 +157,7 @@ curl -N -d '{"text": "...", "chunk": "smooth"}' localhost:5000/stream
 curl -N -d '{"text": "...", "chunk": {"enabled": false}}' localhost:5000/stream
 ```
 
-Clients that chunk the text themselves should send
+Clients that chunk the text themselves (like `piper-client`) should send
 `"chunk": {"enabled": false}` so the text is not split twice.
 
 All available options are documented in
@@ -188,3 +188,17 @@ longer the speech becomes. That is the trade-off to tune.
 | `GET` | `/voices` | downloaded voices |
 | `GET` | `/all-voices` | all Piper voices (from HuggingFace) |
 | `POST` | `/download` | download a voice |
+
+## Command-line client
+
+The package also ships `piper-client`, a streaming client that chunks text,
+plays audio through `pw-play`/`paplay`/`aplay`/`ffplay` and stops instantly when
+interrupted:
+
+``` sh
+piper-client "Hello world."
+piper-client --stop
+```
+
+See [Speech Dispatcher](SPEECHD.md) for the full list of options and for the
+screen reader integration.
